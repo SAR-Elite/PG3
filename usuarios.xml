@@ -7,6 +7,6 @@
 		<direccion>Mi casa</direccion>
 		<cuenta>123</cuenta>
 		<libros>
-		<libro ISBN="1"/><libro ISBN="2"/><libro ISBN="1"/><libro ISBN="1"/></libros>
+		<libro ISBN="1"/><libro ISBN="2"/><libro ISBN="1"/><libro ISBN="1"/><libro ISBN="2"/></libros>
 	</usuario>
 </usuarios>

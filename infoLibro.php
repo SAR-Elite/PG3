@@ -27,6 +27,17 @@
 	?>
 
 	<div id="main">
+
+		<div id="portada">
+			<?php
+				echo ('<img src="data:image/jpeg;base64,'.base64_encode( $libro['Portada'] ).'" width="200" height="300"/>');
+			?>
+		</div>
+
+		<p id="sinopsis">
+			Sinopsis: <?php echo $libro['Sinopsis']; ?>
+		</p>
+
 		<ul>
 			<li>ISBN: <?php echo $libro["ISBN"]; ?></li>
 			<li>Título: <?php echo $libro["Titulo"]; ?></li>
