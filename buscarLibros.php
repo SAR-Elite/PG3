@@ -3,7 +3,7 @@
 	session_start();
 
 	//Esta asignación es para hacer una prueba.
-	$_SESSION["email"] = "1";
+	$_SESSION["id"] = "1";
 ?>
 <!DOCTYPE html>
 <html>
@@ -93,7 +93,7 @@
 		function comprar(ISBN) {
 
 			$.ajax({
-				data: {ISBN : ISBN, email : <?php echo "'" . $_SESSION["email"] . "'";?>},
+				data: {ISBN : ISBN, id : <?php echo "'" . $_SESSION["id"] . "'";?>},
 				url: 'comprar.php',
 				type: 'post',
 				beforeSend: function () {
