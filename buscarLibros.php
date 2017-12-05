@@ -3,7 +3,7 @@
 	session_start();
 
 	//Esta asignación es para hacer una prueba.
-	$_SESSION["email"] = "email";
+	$_SESSION["email"] = "1";
 ?>
 <!DOCTYPE html>
 <html>

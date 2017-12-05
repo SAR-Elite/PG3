@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<!DOCTYPE usuarios SYSTEM "usuarios.dtd">
+
+<usuarios cantidad="1" ult_id="1">
+	<usuario id="1">
+		<nombre>Alex</nombre>
+		<email>a@a</email>
+		<contraseña>a</contraseña>
+		<direccion>Mi casa</direccion>
+		<cuenta>123</cuenta>
+		<libros>
+			<libro ISBN = "1111"></libro>
+		</libros>
+	</usuario>
+</usuarios>

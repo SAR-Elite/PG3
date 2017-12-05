@@ -1,3 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE usuarios
+[
+
 <!ELEMENT usuarios (usuario)*>
 <!ATTLIST usuarios cantidad NMTOKEN #REQUIRED>
 <!ATTLIST usuarios ult_id NMTOKEN #REQUIRED>
@@ -10,5 +15,6 @@
 		<!ELEMENT cuenta (#PCDATA)>
 		<!ELEMENT libros (libro)*>
 			<!ELEMENT libro (#PCDATA)>
-			<!ATTLIST libro id NMTOKEN #REQUIRED>
-			<!ATTLIST libro nombre CDATA #REQUIRED>
+			<!ATTLIST libro ISBN NMTOKEN #REQUIRED>
+
+]>
