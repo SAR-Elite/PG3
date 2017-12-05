@@ -47,6 +47,35 @@
 
 		//Función Ajax para llamar al PHP que busca los libros a partir de un filtro.
 		$('#buscar').click( function() {
+
+			//Validaciones previas de los datos.
+			switch($('#filtro').val())  {
+
+				case "Ano":
+
+					//Comprueba si es un valor numérico.
+					if (!$.isNumeric($('#valor').val())) {
+						alert("Introduce un valor numérico, p.e. 2017");
+						return;
+					}
+
+					//Comprobar que el año es de 4 dígitos.
+					if ($('#valor').val().length != 4) {
+						alert("Introduce un valor de 4 dígitos, p.e. 1917");
+						return;
+					}
+					break;
+
+				case "ISBN":
+
+					//Comprobar si el ISBN es correcto.
+					if (!isValidISBN($('#valor').val())) {
+						alert("ISBN no valido, comprueba si lo has escrito correctamente.");
+						return;
+					}
+					break;
+			}
+
 			$.ajax({
 				data: $('#busqueda').serialize(),
 				url: 'hacerBusquedaLibros.php',
@@ -62,6 +91,7 @@
 
 		//Función Ajax para llamar al PHP que efectua la compra de un libro.
 		function comprar(ISBN) {
+
 			$.ajax({
 				data: {ISBN : ISBN, email : <?php echo "'" . $_SESSION["email"] . "'";?>},
 				url: 'comprar.php',
@@ -75,6 +105,26 @@
 			});
 		};
 
+		//Función que valida un ISBN, creditos a https://neilang.com/articles/how-to-check-if-an-isbn-is-valid-in-javascript/.
+		function isValidISBN (ISBN) {
+
+			ISBN = ISBN.replace(/[^\dX]/gi, '');
+			if(ISBN.length != 10){
+				return false;
+			}
+
+			var chars = ISBN.split('');
+			if(chars[9].toUpperCase() == 'X'){
+				chars[9] = 10;
+			}
+
+			var sum = 0;
+			for (var i = 0; i < chars.length; i++) {
+				sum += ((10-i) * parseInt(chars[i]));
+			}
+
+			return ((sum % 11) == 0);
+		}
 	</script>
 </body>
 </html>
