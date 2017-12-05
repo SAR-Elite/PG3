@@ -33,21 +33,21 @@
 		echo "<table> <tr> <th>ISBN</th> <th>Título</th> <th>Autor</th> <th>Género</th> <th>Año</th>";
 
 		//En el caso de estar autentificado.
-		if (isset($_SESSION["email"])) echo "<th>Comprar</th>";
+		if (isset($_SESSION["id"])) echo "<th>Comprar</th>";
 
 		echo "</tr>";
 
 		while ($fila = mysqli_fetch_array( $libros )) {
 			echo "<tr>";
 
-			echo "<td>" . $fila["ISBN"] . "</td>";
+			echo "<td> <a href='infoLibro.php?isbn=" . $fila["ISBN"] . "'>" . $fila["ISBN"] . "</a> </td>";
 			echo "<td>" . $fila["Titulo"] . "</td>";
 			echo "<td>" . $fila["Autor"] . "</td>";
 			echo "<td>" . $fila["Genero"] . "</td>";
 			echo "<td>" . $fila["Ano"] . "</td>";
 
 			//En el caso de estar autentificado.
-			if (isset($_SESSION["email"])) {
+			if (isset($_SESSION["id"])) {
 				echo "<td> <input type='button' value='" . $fila["Precio"] . "€' onclick='comprar(" . $fila["ISBN"] . ")'> </input>  </td>";
 			}
 
