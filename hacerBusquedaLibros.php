@@ -3,7 +3,7 @@
 	session_start();
 
 	//Conexión a la BD.
-	$link = mysqli_connect("localhost", "root", "", "sar");
+	$link = mysqli_connect("localhost", "root", "admin", "sar");
 
 	//Consulta a la BD, dependiendo del filtro elegido.
 	switch ($_POST["filtro"])  {
@@ -47,7 +47,9 @@
 			echo "<td>" . $fila["Ano"] . "</td>";
 
 			//En el caso de estar autentificado.
-			if (isset($_SESSION["email"])) echo "<td> <input type='button' value='comprar' onclick='comprar(" . $fila["ISBN"] . ")'> </input>  </td>"; 
+			if (isset($_SESSION["email"])) {
+				echo "<td> <input type='button' value='" . $fila["Precio"] . "€' onclick='comprar(" . $fila["ISBN"] . ")'> </input>  </td>";
+			}
 
 			echo "</tr>";
 		}

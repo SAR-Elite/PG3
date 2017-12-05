@@ -1,0 +1,14 @@
+<!ELEMENT usuarios (usuario)*>
+<!ATTLIST usuarios cantidad NMTOKEN #REQUIRED>
+<!ATTLIST usuarios ult_id NMTOKEN #REQUIRED>
+	<!ELEMENT usuario (nombre, email, contraseña, direccion, cuenta, libros)>
+	<!ATTLIST usuario id ID #REQUIRED>
+		<!ELEMENT nombre (#PCDATA)>
+		<!ELEMENT email (#PCDATA)>
+		<!ELEMENT contraseña (#PCDATA)>
+		<!ELEMENT direccion (#PCDATA)>
+		<!ELEMENT cuenta (#PCDATA)>
+		<!ELEMENT libros (libro)*>
+			<!ELEMENT libro (#PCDATA)>
+			<!ATTLIST libro id NMTOKEN #REQUIRED>
+			<!ATTLIST libro nombre CDATA #REQUIRED>
