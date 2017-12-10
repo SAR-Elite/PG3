@@ -1,3 +1,7 @@
+<?php		
+	session_start ();
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -19,31 +23,32 @@
 	<header class='main' id='h1'>
 		<h2>TIENDA DE LIBROS</h2>
 
-			<span><a href='logout.php'>Logout</a></span>
+		<span><a href='logout.php'>Logout</a></span>
+
+
 
     </header>
 	<nav class='main' id='n1' role='navigation'>
 
 		<?php
+		
 
-		session_start ();
-
-		if((isset($_SESSION['autentificado'])) & (isset($_SESSION['admin'])) & ($_SESSION['admin']=="SI")){
+		if(isset($_SESSION['id'],$_SESSION['admin'])){
 
 			echo"<span><a href='inicio.php'>Inicio</a></span>";
 			echo"<span><a href='anadir_libro.php'>Añadir libro</a></span>";
 			echo"<span><a href='lista_libros.php'>Lista de libros</a></span>";
 			echo"<span><a href=''>Información</a></span>";
 		
-		}
+		} 
 		
 		else{
 
-			
 			echo"<span><a href='inicio.php'>Inicio</a></span>";
 			echo"<span><a href='lista_libros.php'>Lista de libros</a></span>";
 			echo"<span><a href='perfil.php'>Perfil</a></span>";
 			echo"<span><a href=''>Información</a></span>";
+
 
 		}
 

@@ -1,3 +1,7 @@
+<?php		
+	session_start ();
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -19,14 +23,8 @@
 	<header class='main' id='h1'>
 		<h2>TIENDA DE LIBROS</h2>
 
-		<?php
-		session_start ();
+		<span><a href='logout.php'>Logout</a></span>
 
-		if((isset($_SESSION['autentificado'])) & (isset($_SESSION['admin'])) & ($_SESSION['admin']=="SI")){
-			echo"<span><a href='logout.php'>Logout</a></span>";
-		}
-
-		?>
 
 
     </header>
@@ -35,13 +33,23 @@
 		<?php
 		
 
-		if((isset($_SESSION['autentificado'])) & (isset($_SESSION['admin'])) & ($_SESSION['admin']=="SI")){
+		if(isset($_SESSION['id'],$_SESSION['admin'])){
 
 			echo"<span><a href='inicio.php'>Inicio</a></span>";
 			echo"<span><a href='anadir_libro.php'>Añadir libro</a></span>";
 			echo"<span><a href='lista_libros.php'>Lista de libros</a></span>";
 			echo"<span><a href=''>Información</a></span>";
 		
+		} 
+		
+		else{
+
+			echo"<span><a href='inicio.php'>Inicio</a></span>";
+			echo"<span><a href='lista_libros.php'>Lista de libros</a></span>";
+			echo"<span><a href='perfil.php'>Perfil</a></span>";
+			echo"<span><a href=''>Información</a></span>";
+
+
 		}
 
 
@@ -99,12 +107,8 @@
 
 
 					//Validacion del servidor
-						$erISBN = '/^([0-9]{3})+(-)+([0-9]{1})+(-)+([0-9]{2})+(-)+([0-9]{6})(-)+([0-9]{1})$/';
-
-						
 
 
-						$("#nom").val().match(/^([a-zA-ZáéíóúÁÉÍÓÚ])+((([ ])+([a-zA-ZáéíóúÁÉÍÓÚ]{1,})){1,})$/);
 
 						if($_POST['isbn']=="" || $_POST['titulo']=="" || $_POST['aut']==""|| $_POST['cat']==""|| $_POST['fech']=="")
 
