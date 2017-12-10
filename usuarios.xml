@@ -1,12 +1,12 @@
-<?xml version="1.0"?>
-<usuarios cantidad="1" ult_id="1">
-	<usuario id="1">
-		<nombre>Alex</nombre>
-		<email>a@a</email>
-		<contraseña>a</contraseña>
-		<direccion>Mi casa</direccion>
-		<cuenta>123</cuenta>
+<?xml version="1.0" encoding="UTF-8"?>
+<usuarios cantidad="2" ult_id="2">
+	<usuario id="0">
+		<nombre>Admin</nombre>
+		<email>admin</email>
+		<contraseña>admin</contraseña>
+		<direccion>admin</direccion>
+		<cuenta>admin</cuenta>
 		<libros>
-		<libro ISBN="1"/><libro ISBN="2"/><libro ISBN="1"/><libro ISBN="1"/><libro ISBN="2"/></libros>
+		</libros>
 	</usuario>
-</usuarios>
+<usuario id="2"><nombre>Iván Valdés</nombre><email>eltay77@gmail.com</email><contraseña>a</contraseña><direccion>Plaza Anzarán Nº10 , Bajo</direccion><codPostal>20301</codPostal><cuenta>1234567890</cuenta><libros><libro ISBN="2"/></libros></usuario></usuarios>

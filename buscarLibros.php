@@ -3,7 +3,7 @@
 	session_start();
 
 	//Esta asignación es para hacer una prueba.
-	$_SESSION["id"] = "1";
+	//$_SESSION["id"] = "1";
 ?>
 <!DOCTYPE html>
 <html>
