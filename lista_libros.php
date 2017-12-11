@@ -1,110 +1,103 @@
-<?php		
-	session_start ();
+<?php
+    session_start();
 ?>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
-	<title>Lista de libros</title>
-    <link rel='stylesheet' type='text/css' href='estilos/style.css' />
-	<link rel='stylesheet' 
-		   type='text/css' 
-		   media='only screen and (min-width: 530px) and (min-device-width: 481px)'
-		   href='estilos/wide.css' />
-	<link rel='stylesheet' 
-		   type='text/css' 
-		   media='only screen and (max-width: 480px)'
-		   href='estilos/smartphone.css' />
+    <meta charset="utf-8">
+	<title>Lista Libros</title>
+	<link  rel='stylesheet' type='text/css' href='styles/styles.css' />
+
   </head>
   <body>
-  <div id='page-wrap'>
-	<header class='main' id='h1'>
-		<h2>TIENDA DE LIBROS</h2>
 
-		<span><a href='logout.php'>Logout</a></span>
+  	<img class ="logo" src="img/logo.png">
 
-
-
-    </header>
-	<nav class='main' id='n1' role='navigation'>
-
-		<?php
-		
-
-		if(isset($_SESSION['id'],$_SESSION['admin'])){
-
-			echo"<span><a href='inicio.php'>Inicio</a></span>";
-			echo"<span><a href='anadir_libro.php'>Añadir libro</a></span>";
-			echo"<span><a href='lista_libros.php'>Lista de libros</a></span>";
-			echo"<span><a href=''>Información</a></span>";
-		
-		} 
-		
-		else{
-
-			echo"<span><a href='inicio.php'>Inicio</a></span>";
-			echo"<span><a href='lista_libros.php'>Lista de libros</a></span>";
-			echo"<span><a href='perfil.php'>Perfil</a></span>";
-			echo"<span><a href=''>Información</a></span>";
+  	<nav class = "menu">
+      
+      <?php
 
 
-		}
+
+        if(isset($_SESSION['id'],$_SESSION['admin'])){
+
+          echo"<a href='inicio.php'>Inicio</a>";
+          echo"<a href='anadir_libro.php'>Añadir libro</a>";
+          echo"<a href='lista_libros.php'>Lista de libros</a>";
+          echo"<a href='informacion.php'>Información</a>";
+          echo" <a href='logout.php'>Logout</a>";
+        } 
+        
+        elseif(isset($_SESSION['id'])){
+
+          echo"<a href='inicio.php'>Inicio</a>";
+          echo"<a href='lista_libros.php'>Lista de libros</a>";
+          echo"<a href='perfil.php'>Perfil</a>";
+          echo"<a href='informacion.php'>Información</a>";
+          echo" <a href='logout.php'>Logout</a>";
+
+        }
+
+        else{
+
+          echo"<a href='inicio.php'>Inicio</a>";
+          echo"<a href='lista_libros.php'>Lista de libros</a>";
+          echo"<a href='informacion.php'>Información</a>";
+          echo"<a href='registro.html'>Registro</a>";
+          echo"<a href='login.php'>Login</a>";
+
+        }
 
 
-		?>
+        ?>
+
+        
+        
+  	</nav>
+
+  	<div class= "container">
+
+      <!--Aqui se mostrará el contenido de la página-->
+     
+      <?php
+
+        //Contectar con la base de datos 
+
+        $link = mysqli_connect("localhost", "root", "admin", "sar");
+        if (!$link)
+        {
+         echo "Fallo al conectar a MySQL: " . $link->connect_error;
+        }
+
+        //Insertar los datos
+        $libro=mysqli_query($link, "SELECT * FROM libros");
+
+        //Error al consultar
+        if (!$libro)
+         {  
+          die('Error: ' . mysqli_error($link));
+          echo "No se ha podido insertar";
+         }
+
+         //Crear la tabla
+
+         echo '<table border=1> <tr> <th> ISBN </th> <th> TITULO </th><th> AUTOR </th> <th> GENERO </th> <th> AÑO </th> <th> PRECIO </th> <th> SINOPSIS </th> </tr>';
 
 
-	</nav>
-    <section class="main" id="s1">
-    
-    	<?php
+          while ($row = mysqli_fetch_array($libro)) {
+           echo '<tr> 
+          <td>' . $row["ISBN"] . '</td> <td>' . $row["Titulo"] .'</td> <td>' . $row["Autor"] .'</td> <td>' . $row["Genero"] .'</td> <td>' . $row["Ano"] .'</td>  <td>' . $row["Precio"] . '</td> <td>' . $row["Sinopsis"] . '</td></tr>';
 
-			//Contectar con la base de datos 
+          }
 
-			$link = mysqli_connect("localhost", "root", "", "libros");
-			if (!$link)
-			{
-			 echo "Fallo al conectar a MySQL: " . $link->connect_error;
-			}
+          echo '</table>';
 
-			//Insertar los datos
-			$libro=mysqli_query($link, "SELECT * FROM libro");
+        // Cerrar conexión
+        mysqli_close($link);
 
-			//Error al consultar
-			if (!$libro)
-			 { 	
-				die('Error: ' . mysqli_error($link));
-				echo "No se ha podido insertar";
-			 }
+      ?>
 
-			 //Crear la tabla
-
-			 echo '<table border=1> <tr> <th> ISBN </th> <th> TITULO </th><th> AUTOR </th> <th> CATEGORIA </th> <th> FECHA </th> <th> PORTADA</th></tr>';
-				while ($row = mysqli_fetch_array($libro)) {
-				echo '<tr><td>' . $row["ISBN"] . '</td> <td>' . $row["TITULO"] .'</td> <td>' . $row["AUTOR"] .'</td> <td>' . $row["CATEGORIA"] .'</td> <td>' . $row["FECHA"] .'</td>
-				 <td>	
-
-				 	<img style="width:50px;height:50px;float: left; border:2px solid black ; margin-left: 3px" src="data:image/jpeg;base64,'.base64_encode( $row['IMAGEN'] ).'"/>		
-
-				 </td>
-
-
-				</tr>';
-				}
-				echo '</table>';
-
-			// Cerrar conexión
-			mysqli_close($link);
-
-		?>
-
-    </section>
-	<footer class='main' id='f1'>
-
-	</footer>
-</div>
+    </div>
 
 </body>
 </html>

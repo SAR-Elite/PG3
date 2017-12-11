@@ -5,15 +5,15 @@
 <!DOCTYPE html>
   <head>
     <meta charset="utf-8">
-	<title>Inicio</title>
-
+	<title>Información</title>
 	<link  rel='stylesheet' type='text/css' href='styles/styles.css' />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
   </head>
   <body>
 
   	<img class ="logo" src="img/logo.png">
   	<nav class = "menu">
+
 
       <?php
 
@@ -50,26 +50,17 @@
       ?>
 
 
+
   	</nav>
 
   	<div class= "container">
+  		<!--Aqui se mostrará el contenido de la página-->
+      <div>
+      <h1>¿QUIENES SOMOS?</h1>
+      <p>LibrosOnline, tu mejor tienda de libros. Encuentra el libro que quieras al mejor precio aquí. LibrosOnline tiene el mayor número de referencias de libros en venta y ebooks convirtiéndose en la principal tienda online de libros del país. Sea cual sea tu compra esta es tu tienda.</p>
+      </div>
+  </div>
 
-      <!--Aqui se mostrará el contenido de la página-->
-      aaa
-
-    </div>
-
-    <script type="text/javascript">
-      
-      $.ajax({
-        url: 'buscarLibros.php',
-        type: 'post',
-        success: function (data) {
-          $(".container").html(data);
-        }
-      });
-
-    </script>
 
 
 </body>

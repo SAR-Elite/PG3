@@ -1,9 +1,6 @@
 <?php
 	//Inicio de la Sesión.
 	session_start();
-
-	//Esta asignación es para hacer una prueba.
-	//$_SESSION["id"] = "1";
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,7 +44,6 @@
 
 		//Función Ajax para llamar al PHP que busca los libros a partir de un filtro.
 		$('#buscar').click( function() {
-
 			//Validaciones previas de los datos.
 			switch($('#filtro').val())  {
 
@@ -93,7 +89,7 @@
 		function comprar(ISBN) {
 
 			$.ajax({
-				data: {ISBN : ISBN, id : <?php echo "'" . $_SESSION["id"] . "'";?>},
+				data: {ISBN : ISBN},
 				url: 'comprar.php',
 				type: 'post',
 				beforeSend: function () {

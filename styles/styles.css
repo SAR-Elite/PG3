@@ -2,6 +2,12 @@
 
 .logo {display: table;margin:auto;}
 .menu {text-align: center ;display: table; margin:auto; width: 100%;padding:1%;background: #E4F1FE;margin-bottom: 1%;}
-.menu a {margin: 5% ;font-family: 'Roboto', sans-serif;font-weight: bold;}
+.menu a {text-decoration: none; margin: 5% ;font-family: 'Roboto', sans-serif;font-weight: bold;}
 .menu a:hover{color:#446CB3;}
-.container {width: 100%; height: 70% ;border: 1px solid black }
+.menu a:visited {color: #000000}
+.menu a:visited:hover {color: #446CB3}
+.container {width: 100%; height: 70%; border: 1px solid black; display: table; margin:auto; font-family: 'Roboto', sans-serif;}
+.container div {margin: 3%;}
+.container div p { margin-right: 30%;}
+#fregistro {position: relative; left:40%;}
+#login {position: relative; left:40%;}

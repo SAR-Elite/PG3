@@ -49,7 +49,7 @@
 
 		<?php
 			if (isset($_SESSION["id"])) {
-				echo "<input type='button' value='Comprar' onclick='comprar(" . $libro["ISBN"] . ")'> </input>";
+				echo "<input type='button' value='Comprar' onclick='comprar(\"" . $libro["ISBN"] . "\")'> </input>";
 			}
 		?>
 	</div>

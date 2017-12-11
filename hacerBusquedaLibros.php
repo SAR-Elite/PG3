@@ -40,7 +40,7 @@
 		while ($fila = mysqli_fetch_array( $libros )) {
 			echo "<tr>";
 
-			echo "<td> <a href='infoLibro.php?isbn=" . $fila["ISBN"] . "'>" . $fila["ISBN"] . "</a> </td>";
+			echo "<td> <a href='infoLibro.php?isbn=" . (string) $fila["ISBN"] . "'>" . (string) $fila["ISBN"] . "</a> </td>";
 			echo "<td>" . $fila["Titulo"] . "</td>";
 			echo "<td>" . $fila["Autor"] . "</td>";
 			echo "<td>" . $fila["Genero"] . "</td>";
@@ -48,7 +48,7 @@
 
 			//En el caso de estar autentificado.
 			if (isset($_SESSION["id"])) {
-				echo "<td> <input type='button' value='" . $fila["Precio"] . "€' onclick='comprar(" . $fila["ISBN"] . ")'> </input>  </td>";
+				echo "<td> <input type='button' value='" . $fila["Precio"] . "€' onclick='comprar(\"" . $fila["ISBN"] . "\")'> </input>  </td>";
 			}
 
 			echo "</tr>";

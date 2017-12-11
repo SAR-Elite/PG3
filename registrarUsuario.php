@@ -11,7 +11,7 @@
 		)
 		){
 
-		$error =validarRegistro(
+		$error = validarRegistro(
 		$_POST['nombre'],
 		$_POST['email'],
 		$_POST['pass1'],
@@ -19,7 +19,7 @@
 		$_POST['direccion'],
 		$_POST['codPostal'],
 		$_POST['cuenta']);
-
+		
 		if($error!=""){
 			echo $error;
 		}
@@ -62,10 +62,10 @@
 		elseif(strlen($codPostal)!=5){
 			$error="El codigo postal no es válido";
 		}
-
 		//Verificar que no existe un usario con el mismo mail
-		$error=comprobarEmail($email);
-
+		elseif(comprobarEmail($email)){
+		$error='Ya existe un usuario registrado con el mismo email';
+		}
 
 		return $error;
 
@@ -76,10 +76,10 @@
 		$usuarios = simplexml_load_file('usuarios.xml');
 		foreach ($usuarios->usuario as $usuario) {
 			if($email == $usuario->email){
-					return 'Ya existe un usuario registrado con el mismo email';
+					return true;
 				}
 		}
-		return '';
+		return false;
 	}
 
 	function guardarUsuario($nombre,$email,$pass,$direccion,$codPostal,$cuenta){
